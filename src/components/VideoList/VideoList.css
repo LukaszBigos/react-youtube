@@ -1,6 +1,7 @@
 .list-container {
   display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  margin: 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 40%;
 }

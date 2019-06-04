@@ -5,7 +5,7 @@ import youtube from "../../apis/youtube";
 import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import VideoList from "../VideoList/VideoList";
-import VideoDetails from '../VideoDetails/VideoDetails';
+import VideoDetails from "../VideoDetails/VideoDetails";
 
 class App extends React.Component {
   state = {
@@ -13,29 +13,38 @@ class App extends React.Component {
     videoSelected: null
   };
 
+  componentDidMount() {
+    this.onTermSubmit('trail bikes 2019');
+  }
+
   onTermSubmit = async term => {
     const response = await youtube.get("/search", {
       params: {
         q: term
       }
     });
-    this.setState({ videos: response.data.items });
+    this.setState({ 
+      videos: response.data.items,
+      videoSelected: response.data.items[0]
+    });
   };
 
   onVideoSelect = video => {
-   this.setState({videoSelected: video});
+    this.setState({ videoSelected: video });
   };
 
   render() {
     return (
       <div>
         <h3>Hi from App component</h3>
-        <VideoDetails video={this.state.videoSelected}/>
         <SearchBar onFormSubmit={this.onTermSubmit} />
-        <VideoList
-          videos={this.state.videos}
-          onVideoSelect={this.onVideoSelect}
-        />
+        <div className="video-wrapper">
+          <VideoDetails video={this.state.videoSelected} />
+          <VideoList
+            videos={this.state.videos}
+            onVideoSelect={this.onVideoSelect}
+          />
+        </div>
       </div>
     );
   }

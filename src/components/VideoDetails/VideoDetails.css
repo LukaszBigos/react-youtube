@@ -1,0 +1,27 @@
+.details-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 1rem;
+  width: 58%;
+  border: 1px solid #bbb;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px 2px rgba(187,187,187,1);
+}
+
+iframe {
+  height: 60vh;
+  width: 90%;
+}
+
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  padding: 1rem;
+  border: 1px solid #bbb;
+  border-radius: 0.4rem;
+  width: 95%;
+  box-shadow: 0 0 5px 2px rgba(187,187,187,1);
+}
